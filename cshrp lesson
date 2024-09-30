@@ -1,0 +1,67 @@
+
+
+
+//On Mon, Sep 23, 2024 at 1:23 PM BITERANTA, LLENARD MATHEW V. <llenardmathew@gmail.com> wrote:
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string [] args)
+    {
+        input();
+    }
+    public static void input()
+    {
+        Console.WriteLine("Input Student name");
+        string sName = Console.ReadLine();
+        Console.WriteLine("Input Midterm Quizzes");
+        double amQ = Quizzes();
+        Console.WriteLine("Input Midterm exam");
+        double me = double.Parse(Console.ReadLine());
+        Console.WriteLine("Input Final Quizzes");
+        double afQ = Quizzes();
+        Console.WriteLine("Input Final exam");
+        double fe = double.Parse(Console.ReadLine());
+        double mg = MidtermGrade(amQ, me);
+        double fg = FinalGrade(afQ, fe);
+        double sg = SemestralGrade(mg, fg);
+        string rem = Remark(sg);
+        output(sName,sg,rem);
+       
+    }
+    public static double Quizzes()
+    {
+        int sum = 0;
+        for(int ctr = 1; ctr <= 5; ctr++)
+            {
+                int Q = int.Parse(Console.ReadLine());
+                sum = sum + Q;
+            }
+            return (double)sum/5;
+    }
+    public static double MidtermGrade(double amQ, double me)
+    {
+        return 0.6 * amQ + 0.4 * me;
+    }
+    public static double FinalGrade(double afQ, double fe)
+    {
+        return 0.6 * afQ + 0.4 * fe;
+    }
+    public static double SemestralGrade(double mg, double fg)
+    {
+        return (mg+fg)/2;
+    }
+    public static string Remark(double sg)
+    {
+        if (sg >= 75)
+        return "Passed";
+        else return "Failed";
+    }
+    public static void output(string sName, double sg, string Remark)
+    {
+        Console.WriteLine("Student name; {0} Semestral Grade ; {1} Remark; {2}", sName, sg, Remark);
+    }
+}
