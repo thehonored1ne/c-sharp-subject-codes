@@ -1,0 +1,72 @@
+
+
+
+//On Mon, Sep 23, 2024 at 1:23 PM BITERANTA, LLENARD MATHEW V. <llenardmathew@gmail.com> wrote:
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string [] args)
+    {
+        input();
+        
+    }
+    
+    public static void input()
+    {
+        Console.WriteLine("Input Student name");
+        string sName = Console.ReadLine();
+        Console.WriteLine("Input Midterm Quizzes");
+        double amQ = 0; Quizzes(1,ref amQ);
+        Console.WriteLine("Input Midterm exam");
+        double me = double.Parse(Console.ReadLine());
+        Console.WriteLine("Input Final Quizzes");
+        double afQ = 0; Quizzes(1,ref afQ);
+        Console.WriteLine("Input Final exam");
+        double fe = double.Parse(Console.ReadLine());
+        double mg = 0; MidtermGrade(amQ, me, ref mg);
+        double fg = 0; FinalGrade(afQ, fe, ref fg);
+        double sg = 0; SemestralGrade(mg, fg, ref sg);
+        string rem = " "; Remark(sg, ref rem);
+        output(sName,sg,rem);
+       
+    }
+    
+    public static double Quizzes( int ctr, ref double amQ)
+    {
+        int q = int.Parse(Console.ReadLine());
+        amQ += q; ctr++;
+        if(ctr > 5)
+            amQ = amQ/5;
+            return 0;
+        return Quizzes(ctr, ref amQ);
+    }
+    
+    public static void MidtermGrade(double amQ, double me, ref double mg)
+    {
+         mg = 0.6 * amQ + 0.4 * me;
+    }
+    
+    public static void FinalGrade(double afQ, double fe, ref double fg)
+    {
+        fg = 0.6 * afQ + 0.4 * fe;
+    }
+    
+    public static void SemestralGrade(double mg, double fg, ref double sg)
+    {
+        sg =  (mg+fg)/2;
+    }
+    
+    public static void Remark(double sg, ref string rem)
+    {
+        rem = sg >= 75? "Passed":"Failed";
+    }
+    
+    public static void output(string sName, double sg, string Remark)
+    {
+        Console.WriteLine("Student name; {0} Semestral Grade ; {1} Remark; {2}", sName, sg,Remark);
+    }
+}
